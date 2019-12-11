@@ -1,0 +1,37 @@
+<apex:page controller="Adoption">
+  <h1>Adopt Connect</h1>
+  <apex:form>
+    <apex:outputPanel>
+      <apex:outputPanel rendered="{!state='initial'}">
+        <apex:commandButton value="Child" action="{!goToChildEntry}" />
+        <apex:commandButton value="Parent" action="{!goToParentEntry}" />
+      </apex:outputPanel>
+      <apex:outputPanel rendered="{!state='child entry'}">
+        <h1>You're a Child!</h1>
+      </apex:outputPanel>
+      <apex:outputPanel rendered="{!state='parent entry'}">
+        <apex:pageBlock title="You're a Parent">
+          <apex:pageBlockButtons location="bottom">
+            <apex:commandButton value="Submit" action="{!submitparent}"/>
+          </apex:pageBlockButtons>
+          <apex:pageBlockSection title="Collapse">
+            <apex:inputField value="{!parent.Name}" />
+            <apex:inputField value="{!parent.Email__c}" />
+            <apex:inputField value="{!parent.Ice_Cream__c}" />
+            <apex:inputField value="{!parent.Trampoline__c}" />
+            <apex:inputField value="{!parent.Siblings__c}" />
+            <apex:pageBlockSectionItem>
+              <apex:outputPanel>
+                <apex:outputLabel value="Bedtime" for="bedtime" />
+                <apex:inputField id="bedtime" value="{!parent.Bedtime__c}" />
+                <apex:selectRadio value="{!meridiem}">
+                  <apex:selectOptions value="{!meridiemOptions}" />
+                </apex:selectRadio>          
+              </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+      </apex:outputPanel>
+    </apex:outputPanel>
+  </apex:form>
+</apex:page>
