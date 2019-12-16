@@ -1,13 +1,41 @@
 <apex:page controller="Adoption">
+  <style>
+    h2 {
+      color: blue;
+      cursor: pointer;
+    }
+  </style>
   <h1>Adopt Connect</h1>
   <apex:form>
+    <apex:actionFunction name="backHome" action="{!pageReset}"/>
     <apex:outputPanel>
       <apex:outputPanel rendered="{!state='initial'}">
         <apex:commandButton value="Child" action="{!goToChildEntry}" />
         <apex:commandButton value="Parent" action="{!goToParentEntry}" />
       </apex:outputPanel>
       <apex:outputPanel rendered="{!state='child entry'}">
-        <h1>You're a Child!</h1>
+        <apex:pageBlock title="You're a Child">
+          <apex:pageBlockButtons location="bottom">
+            <apex:commandButton value="Submit" action="{!submitchild}" />
+          </apex:pageBlockButtons>
+          <apex:pageBlockSection title="Collapse">
+            <apex:inputField value="{!child.Name}" />
+            <apex:inputField value="{!child.Email__c}" />
+            <apex:inputField value="{!child.Ice_Cream__c}" label="Select your favorite ice cream flavors"/>
+            <apex:inputField value="{!child.Trampoline__c}" label="Do you require a trampoline?"/>
+            <apex:inputField value="{!child.Min_Siblings__c}" label="Minimum Siblings" />
+            <apex:inputField value="{!child.Max_Siblings__c}" label="Maximum Siblings" />
+            <apex:pageBlockSectionItem>
+              <apex:outputPanel>
+                <apex:outputLabel value="Bedtime" for="bedtime" />
+                <apex:inputField id="bedtime" value="{!child.Bedtime__c}" />
+                <apex:selectRadio value="{!meridiem}">
+                  <apex:selectOptions value="{!meridiemOptions}" />
+                </apex:selectRadio>
+              </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+        </apex:pageBlock>
       </apex:outputPanel>
       <apex:outputPanel rendered="{!state='parent entry'}">
         <apex:pageBlock title="You're a Parent">
@@ -31,6 +59,9 @@
             </apex:pageBlockSectionItem>
           </apex:pageBlockSection>
         </apex:pageBlock>
+      </apex:outputPanel>
+      <apex:outputPanel rendered="{!state='submitted'}">
+        <h2 onClick="backHome()">Hello, {!customerName}! Thank you for submitting your information.</h2>
       </apex:outputPanel>
     </apex:outputPanel>
   </apex:form>
