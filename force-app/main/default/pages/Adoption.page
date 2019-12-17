@@ -1,4 +1,4 @@
-<apex:page controller="Adoption">
+<apex:page controller="Adoption" docType="html-5.0">
   <style>
     h2 {
       color: blue;
@@ -60,9 +60,12 @@
           </apex:pageBlockSection>
         </apex:pageBlock>
       </apex:outputPanel>
-      <apex:outputPanel rendered="{!state='submitted'}">
-        <h2 onClick="backHome()">Hello, {!customerName}! Thank you for submitting your information.</h2>
-      </apex:outputPanel>
     </apex:outputPanel>
   </apex:form>
+  <apex:outputPanel rendered="{!state='submitted'}">
+    <h2 onClick="backHome()">Hello, {!customerName}! Thank you for submitting your information.</h2>
+  </apex:outputPanel>
+  <apex:outputPanel rendered="{!state='submitted' || $CurrentPage.parameters.cc='true'}">
+    <c:AuthorizeDotNet />
+  </apex:outputPanel>
 </apex:page>
