@@ -1,0 +1,74 @@
+<apex:component controller="AuthorizeDotNetController">
+  <apex:form>
+    <div>
+      <apex:outputLabel value="Amount" />
+      <apex:input type="text" value="{!amount}"/>
+    </div>
+    <div>
+      <apex:outputLabel value="CC Number" />
+      <apex:input type="text" value="{!ccNumber}"/>
+    </div>
+    <div>
+      <apex:outputLabel value="Expiration Month" />
+      <apex:selectList size="1" value="{!expirationMonth}">
+        <apex:selectOption itemValue="" itemLabel=""/>
+        <apex:selectOption itemValue="01" itemLabel="01"/>
+        <apex:selectOption itemValue="02" itemLabel="02"/>
+        <apex:selectOption itemValue="03" itemLabel="03"/>
+        <apex:selectOption itemValue="04" itemLabel="04"/>
+        <apex:selectOption itemValue="05" itemLabel="05"/>
+        <apex:selectOption itemValue="06" itemLabel="06"/>
+        <apex:selectOption itemValue="07" itemLabel="07"/>
+        <apex:selectOption itemValue="08" itemLabel="08"/>
+        <apex:selectOption itemValue="09" itemLabel="09"/>
+        <apex:selectOption itemValue="10" itemLabel="10"/>
+        <apex:selectOption itemValue="11" itemLabel="11"/>
+        <apex:selectOption itemValue="12" itemLabel="12"/>
+      </apex:selectList>
+    </div>
+    <div>
+      <apex:outputLabel value="Expiration Year" />
+      <apex:selectList size="1" value="{!expirationYear}">
+        <apex:selectOption itemValue="" itemLabel="" />
+        <apex:selectOption itemValue="{!year(today())}" itemLabel="{!year(today())}" />
+        <apex:selectOption itemValue="{!year(today()) + 1}" itemLabel="{!year(today()) + 1}" />
+        <apex:selectOption itemValue="{!year(today()) + 2}" itemLabel="{!year(today()) + 2}" />
+        <apex:selectOption itemValue="{!year(today()) + 3}" itemLabel="{!year(today()) + 3}" />
+        <apex:selectOption itemValue="{!year(today()) + 4}" itemLabel="{!year(today()) + 4}" />
+        <apex:selectOption itemValue="{!year(today()) + 5}" itemLabel="{!year(today()) + 5}" />
+        <apex:selectOption itemValue="{!year(today()) + 6}" itemLabel="{!year(today()) + 6}" />
+        <apex:selectOption itemValue="{!year(today()) + 7}" itemLabel="{!year(today()) + 7}" />
+        <apex:selectOption itemValue="{!year(today()) + 8}" itemLabel="{!year(today()) + 8}" />
+        <apex:selectOption itemValue="{!year(today()) + 9}" itemLabel="{!year(today()) + 9}" />
+      </apex:selectList>
+    </div>
+    <div>
+      <apex:outputLabel value="CCV" />
+      <apex:input type="text" value="{!ccv}"/>
+    </div>
+    <div>
+      <apex:outputLabel value="First Name" />
+      <apex:input type="text" value="{!firstName}"/>
+    </div>
+    <div>
+      <apex:outputLabel value="Last Name" />
+      <apex:input type="text" value="{!lastName}"/>
+    </div>
+    <div>
+      <apex:outputLabel value="Email" />
+      <apex:input type="text" value="{!email}"/>
+    </div>
+    <div>
+      <apex:outputLabel value="Street" />
+      <apex:input type="text" value="{!street}"/>
+    </div>
+    <div>
+      <apex:outputLabel value="Zip Code" />
+      <apex:input type="text" value="{!zip}"/>
+    </div>
+   <apex:commandButton value="Submit" action="{!submitPayment}" rerender="output"/>
+  </apex:form>
+  <apex:outputPanel id="output">
+    response:{!authDotNetResponse}
+  </apex:outputPanel>
+</apex:component>
