@@ -13,6 +13,10 @@ public with sharing class Adoption {
             new SelectOption('AM', 'PM')
         };
     }}
+    
+    public Adoption() {
+        state = 'initial';
+    }
     public void pageReset() {
         state = 'initial';
     }
@@ -45,8 +49,4 @@ public with sharing class Adoption {
         return bedtime;
     }
 
-
-    public Adoption() {
-        state = 'initial';
-    }
 }

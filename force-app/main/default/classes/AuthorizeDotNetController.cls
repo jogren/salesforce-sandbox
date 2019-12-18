@@ -9,6 +9,7 @@ public with sharing class AuthorizeDotNetController {
     public string email{get;set;}
     public string street{get;set;}
     public string zip{get;set;}
+    public string childId{get;set;}
     public AuthorizeDotNetResponse authDotNetResponse{get;set;}
 
     public AuthorizeDotNetController() {
@@ -26,7 +27,9 @@ public with sharing class AuthorizeDotNetController {
         string responseJSON = response.getBody();
         responseJSON = responseJSON.substring(1);
         authDotNetResponse = (AuthorizeDotNetResponse)Json.deserialize(responseJSON, AuthorizeDotNetResponse.class);
-        system.debug(authDotNetResponse);
+        if(authDotNetResponse.transactionResponse.responseCode == '1') {
+            update new Child__c (id = childId, transaction_id__c = authDotNetResponse.transactionResponse.transId);
+        }
     }
 
     public string jsonForAuthDotNet() {
