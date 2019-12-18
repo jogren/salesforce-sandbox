@@ -1,5 +1,7 @@
 <apex:component controller="AuthorizeDotNetController">
+  <apex:attribute name="childId" description="ID of child record" type="string" required="true" />
   <apex:form>
+    <apex:inputHidden value="{!childId}"  />
     <div>
       <apex:outputLabel value="Amount" />
       <apex:input type="text" value="{!amount}"/>
