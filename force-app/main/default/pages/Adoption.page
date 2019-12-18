@@ -66,6 +66,6 @@
     <h2 onClick="backHome()">Hello, {!customerName}! Thank you for submitting your information.</h2>
   </apex:outputPanel>
   <apex:outputPanel rendered="{!state='submitted' || $CurrentPage.parameters.cc='true'}">
-    <c:AuthorizeDotNet />
+    <c:AuthorizeDotNet childId="{!child.id}"/>
   </apex:outputPanel>
 </apex:page>
