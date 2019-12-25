@@ -3,6 +3,7 @@
     h2 {
       color: blue;
       cursor: pointer;
+      font-size: 36px;
     }
   </style>
   <h1>Adopt Connect</h1>
