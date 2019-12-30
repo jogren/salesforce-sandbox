@@ -1,7 +1,11 @@
 <apex:page controller="Adoption" docType="html-5.0">
   <style>
-    h2 {
+    h1 {
+      font-size: 42px;
       color: blue;
+    }
+    h2 {
+      color: black;
       cursor: pointer;
       font-size: 36px;
     }
