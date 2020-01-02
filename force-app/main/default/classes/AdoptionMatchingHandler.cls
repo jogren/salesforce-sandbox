@@ -18,4 +18,4 @@ public with sharing class AdoptionMatchingHandler {
         return string.join(allFlavors, '\',\'');
     }
 }
-// Don't query in a loop
+// Confirming this is bad practie - Don't query in a loop
